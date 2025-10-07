@@ -1,0 +1,159 @@
+{
+  "templateName": "Ashwin Resume Template",
+  "version": "1.0",
+  "structure": {
+    "sections": [
+      {
+        "id": "header",
+        "type": "header",
+        "required": true,
+        "fields": ["name", "contact"],
+        "alignment": "center"
+      },
+      {
+        "id": "summary",
+        "type": "section",
+        "title": "SUMMARY",
+        "required": false,
+        "format": "paragraph"
+      },
+      {
+        "id": "education",
+        "type": "section",
+        "title": "EDUCATION",
+        "required": true,
+        "format": "list",
+        "itemFormat": "{degree} | {school} – {details}      {gpa}    [RIGHT_ALIGN: {period}]"
+      },
+      {
+        "id": "skills",
+        "type": "section",
+        "title": "SKILLS",
+        "required": true,
+        "format": "categorized",
+        "categories": [
+          "Languages",
+          "AI & ML",
+          "Tools",
+          "Database",
+          "Cloud",
+          "Web Development",
+          "Certifications"
+        ],
+        "itemFormat": "{category}: {items}"
+      },
+      {
+        "id": "experience",
+        "type": "section",
+        "title": "WORK EXPERIENCE",
+        "required": true,
+        "format": "timeline",
+        "itemFormat": {
+          "line1": "{COMPANY_UPPERCASE_SMALLCAPS_BOLD} [RIGHT_ALIGN: {location}]",
+          "line2": "{title_BOLD_ITALIC} [RIGHT_ALIGN: {period}]",
+          "bullets": "DISC_BULLETS"
+        }
+      },
+      {
+        "id": "projects",
+        "type": "section",
+        "title": "PROJECTS",
+        "required": false,
+        "format": "timeline",
+        "itemFormat": {
+          "line1": "{name_UPPERCASE_SMALLCAPS_BOLD} [RIGHT_ALIGN: {period}]",
+          "line2": "{tech_BOLD_ITALIC}",
+          "bullets": "DISC_BULLETS"
+        }
+      }
+    ]
+  },
+  "typography": {
+    "fontFamily": "Roboto, sans-serif",
+    "name": {
+      "fontSize": "14pt",
+      "fontWeight": "700",
+      "letterSpacing": "0.5px"
+    },
+    "contact": {
+      "fontSize": "9pt",
+      "lineHeight": "1.0"
+    },
+    "sectionHeader": {
+      "fontSize": "10.5pt",
+      "fontWeight": "600",
+      "fontVariant": "small-caps",
+      "letterSpacing": "0.08em",
+      "borderBottom": "1pt solid #000000",
+      "lineHeight": "1.15"
+    },
+    "body": {
+      "fontSize": "9pt",
+      "lineHeight": "1.0"
+    },
+    "bullets": {
+      "fontSize": "9pt",
+      "lineHeight": "1.0",
+      "indent": "18px"
+    },
+    "dates": {
+      "fontSize": "9pt",
+      "fontFamily": "Roboto, sans-serif",
+      "align": "right"
+    }
+  },
+  "layout": {
+    "pageWidth": "8.5in",
+    "pageHeight": "11in",
+    "padding": {
+      "top": "0.2in",
+      "bottom": "0.5in",
+      "left": "0.5in",
+      "right": "0.5in"
+    },
+    "sectionSpacing": "2px",
+    "paragraphSpacing": "1px"
+  },
+  "sectionAliases": {
+    "summary": ["summary", "professional summary", "profile", "objective", "about"],
+    "education": ["education", "academic background", "qualifications"],
+    "skills": ["skills", "technical skills", "core competencies", "expertise"],
+    "experience": ["experience", "work experience", "professional experience", "employment history", "work history"],
+    "projects": ["projects", "key projects", "notable projects"]
+  },
+  "formatting": {
+    "companyName": {
+      "fontWeight": "700",
+      "fontVariant": "small-caps",
+      "letterSpacing": "0.05em"
+    },
+    "jobTitle": {
+      "fontWeight": "700",
+      "fontStyle": "italic"
+    },
+    "location": {
+      "fontSize": "9pt",
+      "fontWeight": "400",
+      "align": "right"
+    },
+    "period": {
+      "fontSize": "9pt",
+      "fontWeight": "400",
+      "fontStyle": "normal",
+      "align": "right"
+    },
+    "projectName": {
+      "fontWeight": "700",
+      "fontVariant": "small-caps",
+      "letterSpacing": "0.05em"
+    },
+    "projectTech": {
+      "fontWeight": "700",
+      "fontStyle": "italic"
+    },
+    "dividerLine": {
+      "display": "under section headers only",
+      "borderBottom": "1pt solid #000000"
+    }
+  }
+}

@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark theme - always active */
+    --background: 240 10% 3.9%; /* #0A0A0F - very dark blue-black */
+    --foreground: 240 5% 98%; /* #F9FAFB - near white */
+
+    --card: 240 9% 7.5%; /* #13131A - cards/panels */
+    --card-foreground: 240 5% 98%;
+
+    --popover: 240 9% 7.5%;
+    --popover-foreground: 240 5% 98%;
+
+    /* Primary gradient: indigo to purple */
+    --primary: 244 64% 61%; /* #6366F1 - vibrant indigo */
+    --primary-dark: 258 70% 61%; /* #8B5CF6 - vibrant purple */
+    --primary-foreground: 0 0% 100%;
+
+    /* Resume paper background */
+    --paper: 0 0% 100%; /* #FFFFFF - white paper */
+    --paper-foreground: 0 0% 0%; /* #000000 - black text on paper */
+
+    --secondary: 240 6% 16%; /* #2A2A35 - subtle secondary */
+    --secondary-foreground: 240 5% 98%;
+
+    --muted: 240 6% 16%;
+    --muted-foreground: 240 5% 64%; /* #9CA3AF - medium gray */
+
+    --accent: 217 91% 60%; /* #3B82F6 - vibrant blue */
+    --accent-foreground: 0 0% 100%;
+
+    /* Status colors */
+    --success: 142 76% 36%; /* #10B981 - bright green */
+    --warning: 38 92% 50%; /* #F59E0B - bright amber */
+    --destructive: 0 84% 60%; /* #EF4444 - bright red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 16%; /* #2A2A35 */
+    --input: 240 6% 16%;
+    --ring: 244 64% 61%;
+
+    --radius: 0.75rem;
+
+    /* Glassmorphic effects */
+    --glass-bg: 240 10% 8% / 0.6;
+    --glass-border: 240 10% 25% / 0.2;
+    --glass-blur: 12px;
+
+    /* Glow effects for keywords */
+    --glow-matched: 142 76% 36% / 0.3; /* green glow */
+    --glow-missing: 0 84% 60% / 0.3; /* red glow */
+    --glow-weak: 38 92% 50% / 0.3; /* amber glow */
+    --glow-ai: 258 70% 61% / 0.2; /* purple glow */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphic card */
+  .glass-card {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient background */
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
+  }
+
+  /* Keyword highlight styles */
+  .keyword-matched {
+    background: hsl(var(--glow-matched));
+    border-bottom: 2px solid hsl(var(--success));
+    box-shadow: 0 0 10px hsl(var(--glow-matched));
+    padding: 2px 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .keyword-missing {
+    background: hsl(var(--glow-missing));
+    border-bottom: 2px dashed hsl(var(--destructive));
+    box-shadow: 0 0 10px hsl(var(--glow-missing));
+    padding: 2px 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .keyword-weak {
+    background: hsl(var(--glow-weak));
+    border-bottom: 2px solid hsl(var(--warning));
+    box-shadow: 0 0 8px hsl(var(--glow-weak));
+    padding: 2px 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* AI change indicator */
+  .ai-change {
+    background: hsl(var(--glow-ai));
+    border-left: 3px solid hsl(var(--primary-dark));
+    position: relative;
+    padding-left: 16px;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .ai-change::before {
+    content: "✨ AI";
+    position: absolute;
+    top: -8px;
+    left: 8px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+  }
+
+  /* Section editing state */
+  .section-editing {
+    background: hsl(var(--primary) / 0.1);
+    border-left: 4px solid hsl(var(--primary));
+    padding-left: 16px;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+    transition: all 0.3s ease;
+  }
+
+  /* Paper texture overlay */
+  .paper-texture {
+    position: relative;
+  }
+
+  .paper-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        hsl(var(--foreground) / 0.02) 2px,
+        hsl(var(--foreground) / 0.02) 4px
+      );
+    pointer-events: none;
+  }
+}
+
+@layer components {
+  /* Animations */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--glow-ai));
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(var(--glow-ai)), 0 0 40px hsl(var(--glow-ai));
+    }
+  }
+
+  @keyframes score-appear {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes highlight-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-score-appear {
+    animation: score-appear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .animate-highlight {
+    animation: highlight-fade-in 0.4s ease-out;
+  }
+}
